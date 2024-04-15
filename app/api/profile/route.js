@@ -1,4 +1,4 @@
-import { connectMongoDB } from "@/lib/mongoDB";
+import { connectMongoDB } from "@/lib/mymongodb";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
 import Profile from "@/models/profile";

@@ -1,5 +1,5 @@
 import Profile from "@/models/profile";
-import { connectMongoDB } from "@/lib/mongoDB";
+import { connectMongoDB } from "@/lib/mymongodb";
 
 export async function GET(req) {
   connectMongoDB();
