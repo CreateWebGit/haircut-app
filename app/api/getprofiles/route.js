@@ -6,5 +6,5 @@ export async function GET(req) {
 
   const profile = await Profile.find({}).lean();
 
-  return Response.json({ ...profile });
+  return Response.json(profile);
 }

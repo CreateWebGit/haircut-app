@@ -32,6 +32,48 @@ const Page = () => {
     }
   };
 
+  const url = "https://api.example.com/users/123";
+
+  fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        throw new error("Network response was not ok");
+      }
+      return res.json();
+    })
+    .then((data) => {
+      console.log("My data", data);
+    })
+    .catch((error) => {
+      console.log("Error ", error);
+    });
+
+  //POST
+
+  const jsonData = { key1: "value1", key2: "value2" };
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(jsonData),
+  };
+
+  fetch("https://api.example/upload", options)
+    .then((res) => {
+      if (!res) {
+        throw new error("error");
+      }
+      return res.json();
+    })
+    .then((data) => {
+      console.log("My data ", data);
+    })
+    .catch((error) => {
+      console.log("Error ", error);
+    });
+
   return (
     <div className="grid place-items-center h-screen">
       <div className="shadow-lg p-5 rounded-lg border-t-4 border-green-400">
