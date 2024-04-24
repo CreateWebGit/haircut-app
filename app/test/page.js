@@ -5,7 +5,7 @@ import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const page = () => {
+const Page = () => {
   const [productTitle, setProductTitle] = useState("Ny product");
   const [productForm, setProductForm] = useState([]);
   const [isDraging, setDraging] = useState(false);
@@ -296,4 +296,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
