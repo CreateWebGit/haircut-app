@@ -2,10 +2,224 @@
 @tailwind components;
 @tailwind utilities;
 
-input {
-  @apply w-[400px] border border-gray-200 py-2 px-6 bg-zinc-100/40;
+form {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  font-size: 16px;
+}
+fieldset {
+  position: relative;
 }
 
-textarea {
-  @apply w-[400px] border border-gray-200 py-2 px-6 bg-zinc-100/40;
+input {
+  height: 35px;
+  outline: none;
+}
+
+label {
+  color: #999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1.2em;
+  font-weight: 500;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  pointer-events: none;
+}
+
+.input[type="submit"] {
+  position: realative;
+  width: 150px;
+  margin: 20px 20px 0 0;
+  background-color: #316aff;
+  border-radius: 15px;
+  color: #fff;
+  border: 1px solid #fff;
+  float: right;
+}
+
+.styledInput {
+  width: 100%;
+  position: relative;
+  margin-top: 20px;
+}
+
+.input[type="text"],
+.input[type="email"],
+.textarea {
+  margin-right: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  border-bottom: 1px solid #cdcdcd;
+  padding: 0.3em 0.5em 0.2em 0em;
+  text-decoration: none;
+  outline: 0;
+  line-height: 1em;
+  margin: 0;
+  width: 100%;
+  font-size: 1.4em;
+  font-weight: 400;
+  color: black;
+}
+
+input:focus ~ label,
+input[type="text"]:valid ~ label,
+input:not(:placeholder-shown) ~ label,
+textarea:focus ~ label,
+textarea:valid ~ label {
+  margin-top: -15px;
+  position: absolute;
+  font-size: 1em;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="text"]:focus ~ .line,
+input[type="email"]:focus ~ .line,
+textarea:focus ~ .line {
+  width: 100%;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-bottom-width: 0px;
+}
+
+.line {
+  height: 2px;
+  width: 0%;
+  background-color: #316aff;
+  position: absolute;
+  bottom: 0;
+}
+
+submitContainer {
+  width: 100%;
+  float: right;
+}
+
+/*
+
+.group {
+  position: relative;
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: 1px solid white;
+  padding: 120px 40px;
+  padding-top: 60px;
+  padding-bottom: 90px;
+  padding-right: 40px;
+  padding-left: 40px;
+  position: relative;
+}
+
+.form p {
+  padding-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: white;
+}
+
+.container-1 {
+  padding-top: 30px;
+}
+
+.main-input {
+  font-size: 16px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 185px;
+  border: none;
+  border-bottom: 1px solid #6c6c6c;
+  background: "#fff";
+  color: #ffffff;
+}
+
+.main-input:focus {
+  outline: none;
+  border-bottom-color: #42ff1c;
+}
+
+.lebal-email {
+  color: #999999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s;
+  -moz-transition: 0.2s;
+  -webkit-transition: 0.2;
+}
+
+.main-input:focus ~ .lebal-email,
+.main-input:valid ~ .lebal-email {
+  top: -20px;
+  font-size: 18px;
+  color: #999;
+}
+
+.highlight-span {
+  position: absolute;
+  height: 60%;
+  width: 0px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.main-input:focus ~ .highlight-span {
+  -webkit-animation: input-focus 0.3s ease;
+  animation: input-focus 0.3s ease;
+}
+
+
+@keyframes input-focus {
+  from {
+    background: #42ff1c;
+  }
+
+  to {
+    width: 185px;
+  }
+}
+*/
+
+.submit {
+  margin-top: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 10px;
 }
