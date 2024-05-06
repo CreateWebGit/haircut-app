@@ -1,13 +1,32 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
-import { signIn } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isData, setData] = useState();
+
+  const session = useSession();
+  const { status } = session;
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      fetch("/api/profile").then((response) => {
+        response.json().then((data) => {
+          console.log(data);
+          setData(data);
+          //setCompany(data.company);
+          //setDescription(data.desription);
+          //setIsAdmin(data.admin);
+          // setProfileFetched(true);
+        });
+      });
+    }
+  }, [session, status]);
 
   const router = useRouter();
 
@@ -26,12 +45,13 @@ const Page = () => {
         return;
       }
 
-      router.replace("dashboard");
+      router.replace(`dashboard/${isData._id}`);
     } catch (error) {
       console.log(error);
     }
   };
 
+  /*
   const url = "https://api.example.com/users/123";
 
   fetch(url)
@@ -73,6 +93,8 @@ const Page = () => {
     .catch((error) => {
       console.log("Error ", error);
     });
+
+    */
 
   return (
     <div className="grid place-items-center h-screen">

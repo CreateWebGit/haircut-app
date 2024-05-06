@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
@@ -5,8 +6,20 @@ import { useRef } from "react";
 const Dropdown = ({ children, title, id, index }) => {
   const [isActive, setActive] = useState(false);
 
+  /*
+  let _productForm = [
+    ...productForm.slice(0, i),
+    {
+      productName: "Ny tjänst",
+      productPrice: "",
+      id: uuidv4(),
+    },
+    ...productForm.slice(i),
+  ];
+  */
+
   return (
-    <div>
+    <div className="">
       <div
         className="border border-gray-150 py-2 px-4 cursor-pointer flex justify-between items-center hover:bg-slate-200"
         onClick={() => setActive(!isActive)}

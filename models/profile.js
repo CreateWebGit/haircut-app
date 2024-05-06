@@ -2,16 +2,25 @@ import mongoose, { Schema, models } from "mongoose";
 
 const userSchema = new Schema(
   {
-    company: {
+    _id: {
       type: String,
       required: true,
     },
-    desription: {
+    company: {
       type: String,
+      required: false,
+    },
+    description: {
+      type: String,
+      required: false,
+    },
+    img: {
+      type: String,
+      required: false,
     },
     email: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   { timestamps: true }

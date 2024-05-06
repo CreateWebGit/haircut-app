@@ -3,6 +3,27 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
+import { Logo } from "./Logo";
+import { Compass, Layout } from "lucide-react";
+
+const navUrls = [
+  {
+    icon: "",
+    label: "Frisör Guiden",
+    href: "/",
+  },
+  {
+    icon: "",
+    label: "Salonger",
+    href: "/salonger",
+  },
+  ,
+  {
+    icon: "",
+    label: "Om oss",
+    href: "/om",
+  },
+];
 
 const Navbar = () => {
   const [isUserNav, setUserNav] = useState();
@@ -15,14 +36,20 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between m-0 py-8 w-full border-b border-slate-200 relative">
-      <div className="flex">
+      <div className="flex items-center">
         <Link href="/">
-          <div className="ml-8 mr-64">Logo</div>
+          <div className="ml-8 mr-64">
+            <Link href="/">
+              <Logo />
+            </Link>
+          </div>
         </Link>
-        <div className="flex gap-2">
-          <Link href="/haha">link1</Link>
-          <Link href="/haha">link2</Link>
-          <Link href="/haha">link3</Link>
+        <div className="flex gap-8 text-slate-500 text-xl">
+          {navUrls.map((item) => (
+            <div>
+              <Link href={item.href}>{item.label}</Link>
+            </div>
+          ))}
         </div>
       </div>
 

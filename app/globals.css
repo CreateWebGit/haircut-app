@@ -1,225 +1,76 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind components;
+  @tailwind utilities;
 
-form {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  font-size: 16px;
-}
-fieldset {
-  position: relative;
-}
+  @layer base {
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
 
-input {
-  height: 35px;
-  outline: none;
-}
+      --card: 0 0% 100%;
+      --card-foreground: 222.2 84% 4.9%;
 
-label {
-  color: #999;
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 1.2em;
-  font-weight: 500;
-  -webkit-transition: all 0.15s ease-in-out;
-  -moz-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
-  pointer-events: none;
-}
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
 
-.input[type="submit"] {
-  position: realative;
-  width: 150px;
-  margin: 20px 20px 0 0;
-  background-color: #316aff;
-  border-radius: 15px;
-  color: #fff;
-  border: 1px solid #fff;
-  float: right;
-}
+      --primary: 222.2 47.4% 11.2%;
+      --primary-foreground: 210 40% 98%;
 
-.styledInput {
-  width: 100%;
-  position: relative;
-  margin-top: 20px;
-}
+      --secondary: 210 40% 96.1%;
+      --secondary-foreground: 222.2 47.4% 11.2%;
 
-.input[type="text"],
-.input[type="email"],
-.textarea {
-  margin-right: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  border: none;
-  border-bottom: 1px solid #cdcdcd;
-  padding: 0.3em 0.5em 0.2em 0em;
-  text-decoration: none;
-  outline: 0;
-  line-height: 1em;
-  margin: 0;
-  width: 100%;
-  font-size: 1.4em;
-  font-weight: 400;
-  color: black;
-}
+      --muted: 210 40% 96.1%;
+      --muted-foreground: 215.4 16.3% 46.9%;
 
-input:focus ~ label,
-input[type="text"]:valid ~ label,
-input:not(:placeholder-shown) ~ label,
-textarea:focus ~ label,
-textarea:valid ~ label {
-  margin-top: -15px;
-  position: absolute;
-  font-size: 1em;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
+      --accent: 210 40% 96.1%;
+      --accent-foreground: 222.2 47.4% 11.2%;
 
-input[type="text"]:focus ~ .line,
-input[type="email"]:focus ~ .line,
-textarea:focus ~ .line {
-  width: 100%;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
-  border-bottom-width: 0px;
-}
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --ring: 222.2 84% 4.9%;
 
-.line {
-  height: 2px;
-  width: 0%;
-  background-color: #316aff;
-  position: absolute;
-  bottom: 0;
-}
+      --radius: 0.5rem;
+    }
 
-submitContainer {
-  width: 100%;
-  float: right;
-}
+    .dark {
+      --background: 222.2 84% 4.9%;
+      --foreground: 210 40% 98%;
 
-/*
+      --card: 222.2 84% 4.9%;
+      --card-foreground: 210 40% 98%;
 
-.group {
-  position: relative;
-}
+      --popover: 222.2 84% 4.9%;
+      --popover-foreground: 210 40% 98%;
 
-.form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  border: 1px solid white;
-  padding: 120px 40px;
-  padding-top: 60px;
-  padding-bottom: 90px;
-  padding-right: 40px;
-  padding-left: 40px;
-  position: relative;
-}
+      --primary: 210 40% 98%;
+      --primary-foreground: 222.2 47.4% 11.2%;
 
-.form p {
-  padding-bottom: 20px;
-  font-size: 24px;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  color: white;
-}
+      --secondary: 217.2 32.6% 17.5%;
+      --secondary-foreground: 210 40% 98%;
 
-.container-1 {
-  padding-top: 30px;
-}
+      --muted: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
 
-.main-input {
-  font-size: 16px;
-  padding: 10px 10px 10px 5px;
-  display: block;
-  width: 185px;
-  border: none;
-  border-bottom: 1px solid #6c6c6c;
-  background: "#fff";
-  color: #ffffff;
-}
+      --accent: 217.2 32.6% 17.5%;
+      --accent-foreground: 210 40% 98%;
 
-.main-input:focus {
-  outline: none;
-  border-bottom-color: #42ff1c;
-}
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
 
-.lebal-email {
-  color: #999999;
-  font-size: 18px;
-  font-weight: normal;
-  position: absolute;
-  pointer-events: none;
-  left: 5px;
-  top: 10px;
-  transition: 0.2s;
-  -moz-transition: 0.2s;
-  -webkit-transition: 0.2;
-}
-
-.main-input:focus ~ .lebal-email,
-.main-input:valid ~ .lebal-email {
-  top: -20px;
-  font-size: 18px;
-  color: #999;
-}
-
-.highlight-span {
-  position: absolute;
-  height: 60%;
-  width: 0px;
-  top: 25%;
-  left: 0;
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.main-input:focus ~ .highlight-span {
-  -webkit-animation: input-focus 0.3s ease;
-  animation: input-focus 0.3s ease;
-}
-
-
-@keyframes input-focus {
-  from {
-    background: #42ff1c;
+      --border: 217.2 32.6% 17.5%;
+      --input: 217.2 32.6% 17.5%;
+      --ring: 212.7 26.8% 83.9%;
+    }
   }
 
-  to {
-    width: 185px;
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
   }
-}
-*/
-
-.submit {
-  margin-top: 1.2rem;
-  padding: 10px 20px;
-  border-radius: 10px;
-}

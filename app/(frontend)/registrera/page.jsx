@@ -3,7 +3,12 @@ import React from "react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { v4 as uuidv4 } from "uuid";
 //import RegisterForm from '@/components/registerForm';
+
+const myID = uuidv4();
+const company = "";
+const description = "";
 
 const Page = () => {
   const [name, setName] = useState("");
@@ -48,10 +53,24 @@ const Page = () => {
           name,
           email,
           password,
+          myID,
         }),
       });
 
       if (res.ok) {
+        const res = await fetch("/api/profile", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            myID,
+            email,
+            company,
+            description,
+          }),
+        });
+
         const form = e.target;
         form.reset();
         router.push("/");

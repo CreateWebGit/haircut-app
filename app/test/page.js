@@ -5,6 +5,8 @@ import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
+import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
+
 const Page = () => {
   const [productTitle, setProductTitle] = useState("Ny product");
   const [productForm, setProductForm] = useState([]);
@@ -78,14 +80,16 @@ const Page = () => {
     setProductForm(_productForm);
   };
 
-  const handleAddProduct = (id) => {
+  const handleAddProduct = (id, i) => {
+    console.log(i);
     const index = productForm.findIndex((product) => product.id === id);
     let _productForm = [...productForm];
-    _productForm[index].products.push({
+    _productForm[index].products.splice(i + 1, 0, {
       productName: "Ny tjänst",
       productPrice: "",
       id: uuidv4(),
     });
+
     setProductForm(_productForm);
   };
 
@@ -113,12 +117,18 @@ const Page = () => {
           <form onSubmit={submit} className="form">
             {productForm.map((category, index) => {
               return (
-                <div key={index}>
-                  <div className="">
-                    <div class="group">
-                      <input required="true" class="main-input" type="text" />
-                      <span class="highlight-span"></span>
-                      <label class="lebal-email">email</label>
+                <div key={index} className="">
+                  <div className="mb-2">
+                    <div className="styledInput !w-[690px]">
+                      <input
+                        className="input"
+                        type="text"
+                        name="user_name"
+                        placeholder=" "
+                        required
+                      />
+                      <label className="label">Kategori</label>
+                      <div className="line"></div>
                     </div>
                   </div>
                   <Droppable droppableId="haha">
@@ -128,8 +138,8 @@ const Page = () => {
                           key={index}
                           className={
                             snapshot.isDraggingOver
-                              ? "bg-orange-300 pl-8"
-                              : "bg-white pl-8"
+                              ? "bg-orange-300 px-8"
+                              : "bg-white px-8"
                           }
                           ref={provided.innerRef}
                           {...provided.droppableProps}
@@ -147,41 +157,25 @@ const Page = () => {
                                       {...provided.draggableProps}
                                       {...provided.dragHandleProps}
                                       ref={provided.innerRef}
-                                      className={
+                                      className={`flex ${
                                         snapshot.isDragging
-                                          ? "bg-blue-200"
-                                          : "bg-white"
-                                      }
+                                          ? "bg-blue-200 mt-2"
+                                          : "bg-white m-2"
+                                      }`}
                                     >
                                       <Dropdown
                                         title={product.productName}
                                         id={product.id}
                                         index={index}
+                                        className=""
                                       >
-                                        <label className="myLabel">
-                                          Namn på tjänst
-                                        </label>
-                                        <input
-                                          name="productName"
-                                          placeholder=""
-                                          className="myInput"
-                                          onChange={(e) =>
-                                            handleProductChange(
-                                              category.id,
-                                              product.id,
-                                              e
-                                            )
-                                          }
-                                        />
-                                        <div className="flex">
-                                          <div>
-                                            <label className="myLabel">
-                                              Tid
-                                            </label>
+                                        <div className="px-8">
+                                          <div className="styledInput !w-[400px] !my-8 ">
                                             <input
-                                              name="productTime"
-                                              placeholder=""
-                                              className="myInput"
+                                              className="pr-8"
+                                              type="text"
+                                              name="user_name"
+                                              placeholder=" "
                                               onChange={(e) =>
                                                 handleProductChange(
                                                   category.id,
@@ -189,27 +183,70 @@ const Page = () => {
                                                   e
                                                 )
                                               }
+                                              required
                                             />
+                                            <label className="label">
+                                              Tjänst
+                                            </label>
+                                            <div className="line"></div>
                                           </div>
-                                          <div>
-                                            <label className="myLabel">
-                                              Pris
-                                            </label>
-                                            <input
-                                              name="productPrice"
-                                              placeholder=""
-                                              className="myInput"
-                                              onChange={(e) =>
-                                                handleProductChange(
-                                                  category.id,
-                                                  product.id,
-                                                  e
-                                                )
-                                              }
-                                            />
+
+                                          <div className="flex gap-24 mb-8">
+                                            <div>
+                                              <div className="styledInput">
+                                                <input
+                                                  className="input"
+                                                  type="text"
+                                                  name="user_name"
+                                                  placeholder=" "
+                                                  onChange={(e) =>
+                                                    handleProductChange(
+                                                      category.id,
+                                                      product.id,
+                                                      e
+                                                    )
+                                                  }
+                                                  required
+                                                />
+                                                <label className="label">
+                                                  Tid
+                                                </label>
+                                                <div className="line"></div>
+                                              </div>
+                                            </div>
+                                            <div>
+                                              <div className="styledInput">
+                                                <input
+                                                  className="input"
+                                                  type="text"
+                                                  name="user_name"
+                                                  placeholder=" "
+                                                  onChange={(e) =>
+                                                    handleProductChange(
+                                                      category.id,
+                                                      product.id,
+                                                      e
+                                                    )
+                                                  }
+                                                  required
+                                                />
+                                                <label className="label">
+                                                  Pris
+                                                </label>
+                                                <div className="line"></div>
+                                              </div>
+                                            </div>
                                           </div>
                                         </div>
                                       </Dropdown>
+                                      <CiSquareMinus color="red" size={40} />
+                                      <CiSquarePlus
+                                        color="green"
+                                        size={40}
+                                        onClick={() =>
+                                          handleAddProduct(category.id, index)
+                                        }
+                                      />
                                     </div>
                                   );
                                 }}
@@ -233,65 +270,6 @@ const Page = () => {
           <button onClick={submit}>Submit</button>
         </div>
       </div>
-      <form class="form">
-        <p>login</p>
-        <div class="group">
-          <input required="true" class="main-input" type="text" />
-          <span class="highlight-span"></span>
-          <label class="lebal-email">email</label>
-        </div>
-        <div class="container-1">
-          <div class="group">
-            <input required="true" class="main-input" type="text" />
-            <span class="highlight-span"></span>
-            <label class="lebal-email">password</label>
-          </div>
-        </div>
-        <button class="submit">submit</button>
-      </form>
-      <form className="form">
-        <div className="styledInput">
-          <input
-            className="input"
-            type="text"
-            name="user_name"
-            placeholder=" "
-            required
-          />
-          <label className="label">Namn</label>
-          <div className="line"></div>
-        </div>
-        <div className="styledInput">
-          <input
-            className="input"
-            type="text"
-            name="user_phone"
-            placeholder=" "
-            required
-          />
-          <label className="label">Telefon</label>
-          <div className="line"></div>
-        </div>
-        <div className="styledInput">
-          <input
-            className="input"
-            type="email"
-            name="user_email"
-            placeholder=" "
-            required
-          />
-          <label className="label">E-post</label>
-          <div className="line"></div>
-        </div>
-        <div className="styledInput">
-          <textarea className="textarea" name="message" required />
-          <label className="label">Meddelande</label>
-          <div className="line"></div>
-        </div>
-        <div className="submitContainer">
-          <input type="submit" value="Skicka" />
-        </div>
-      </form>
     </DragDropContext>
   );
 };
