@@ -8,17 +8,20 @@ import { Compass, Layout } from "lucide-react";
 
 const navUrls = [
   {
+    id: 1,
     icon: "",
     label: "Frisör Guiden",
     href: "/",
   },
   {
+    id: 2,
     icon: "",
     label: "Salonger",
     href: "/salonger",
   },
   ,
   {
+    id: 3,
     icon: "",
     label: "Om oss",
     href: "/om",
@@ -46,7 +49,7 @@ const Navbar = () => {
         </Link>
         <div className="flex gap-8 text-slate-500 text-xl">
           {navUrls.map((item) => (
-            <div>
+            <div key={item.id}>
               <Link href={item.href}>{item.label}</Link>
             </div>
           ))}
