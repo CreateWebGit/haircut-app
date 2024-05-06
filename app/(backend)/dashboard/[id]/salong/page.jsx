@@ -4,7 +4,7 @@ import { TitleForm } from "@/components/title-form";
 //import { useEffect, useState } from "react";
 //import { useRouter } from "next/router";
 
-export async function getData(id) {
+async function getData(id) {
   const res = await fetch(`https://haircut-app.vercel.app/api/profile/${id}`, {
     cache: "no-store",
   });
